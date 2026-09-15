@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas Nutri</title>
+</head>
+<body>
+    
+        <h1>Consultas Nutricionais</h1>
+        <center>
+        <input type="text" id="nome" placeholder="Digite seu nome para iniciar a consulta"> 
+        <br><br> 
+        <input type="date" id="data" placeholder="Digite a data da consulta"> 
+        <br><br> 
+        <input type="text" id="ID" placeholder="Digite seu ID"> 
+        <br><br> 
+        <input type="number" id="peso" step="0.1" placeholder="peso (ex:70)"> 
+        <br><br> 
+        <input type="number" id="altura" step="0.1" placeholder="altura (ex:1.70)"> 
+        <br><br> 
+        <button type="button" onclick="resultadohtml()"> Enviar </button> 
+        <hr>
+        <br><br>
+        <p id="resultado" style="font-weight: bold; font-size: 1.2em;"></p>
+      </center>
+
+        <script>
+        function resultadohtml() {
+        
+            const nome = document.getElementById('nome').value;
+            const peso = parseFloat(document.getElementById('peso').value);
+            const altura = parseFloat(document.getElementById('altura').value);
+            
+        
+            if (isNaN(peso) || isNaN(altura) || altura <= 0) {
+                document.getElementById('resultado').innerText = "Por favor, insira valores válidos para peso e altura.";
+                return;
+            }
+
+            const imc = peso / (altura * altura);
+    
+            document.getElementById('resultado').innerText = `Olá ${nome}! O seu IMC é: ${imc.toFixed(2)}`;
+        }
+        </script>
+    </body>
+    </html>
